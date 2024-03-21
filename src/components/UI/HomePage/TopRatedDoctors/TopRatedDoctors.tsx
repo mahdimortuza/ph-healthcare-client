@@ -1,3 +1,4 @@
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import {
   Box,
   Button,
@@ -55,15 +56,30 @@ const TopRatedDoctors = async () => {
                   <Typography variant="body2" color="text.secondary">
                     {doctor.qualification}, {doctor.designation}
                   </Typography>
+
+                  <Typography variant="body2" color="text.secondary" mt={1}>
+                    <LocationOnIcon /> {doctor.address}
+                  </Typography>
                 </CardContent>
-                <CardActions>
-                  <Button size="small">Share</Button>
-                  <Button size="small">Learn More</Button>
+                <CardActions
+                  sx={{
+                    justifyContent: "space-between",
+                    px: 2,
+                    paddingBottom: "20px",
+                  }}
+                >
+                  <Button>Book Now</Button>
+                  <Button variant="outlined">View Profile</Button>
                 </CardActions>
               </Card>
             </Grid>
           ))}
         </Grid>
+        <Box sx={{ textAlign: "center" }}>
+          <Button variant="outlined" sx={{ marginTop: "20px" }}>
+            View All
+          </Button>
+        </Box>
       </Container>
     </Box>
   );
