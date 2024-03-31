@@ -1,6 +1,7 @@
 "use client";
 import assets from "@/assets";
 import { userLogin } from "@/services/actions/userLogin";
+import { storeUserInfo } from "@/services/auth.services";
 import {
   Box,
   Button,
@@ -27,10 +28,12 @@ const LoginPage = () => {
   } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = async (values) => {
-    console.log(values);
     try {
       const res = await userLogin(values);
-      console.log(res);
+
+      if (res?.data?.accessToken) {
+        storeUserInfo({ accessToken: res?.data?.accessToken });
+      }
     } catch (err: any) {
       console.error(err.message);
     }
