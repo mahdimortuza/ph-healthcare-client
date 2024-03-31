@@ -1,5 +1,6 @@
 "use client";
 import assets from "@/assets";
+import { modifyPayload } from "@/utils/modifyPayload";
 import {
   Box,
   Button,
@@ -32,8 +33,10 @@ const RegisterPage = () => {
     watch,
     formState: { errors },
   } = useForm<IPatientRegisterFormData>();
-  const onSubmit: SubmitHandler<IPatientRegisterFormData> = (data) =>
+  const onSubmit: SubmitHandler<IPatientRegisterFormData> = (values) => {
+    const data = modifyPayload(values);
     console.log(data);
+  };
 
   return (
     <Container>
