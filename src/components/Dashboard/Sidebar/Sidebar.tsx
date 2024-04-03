@@ -5,7 +5,6 @@ import {
 } from "@mui/icons-material/Mail";
 import {
   Box,
-  Divider,
   List,
   ListItem,
   ListItemButton,
@@ -32,7 +31,6 @@ const Sidebar = () => {
           </ListItem>
         ))}
       </List>
-      <Divider />
     </div>
   );
   return (
