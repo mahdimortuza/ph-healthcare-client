@@ -38,7 +38,7 @@ const Navbar = () => {
           <Typography component={Link} href="/diagnostics">
             Diagnostics
           </Typography>
-          <Typography component={Link} href="/ngos">
+          <Typography component={Link} href="/dashboard">
             NGOs
           </Typography>
         </Stack>
