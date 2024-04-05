@@ -11,7 +11,6 @@ const specialtiesApi = baseApi.injectEndpoints({
       }),
     }),
   }),
-  overrideExisting: false,
 });
 
 export const { useCreateSpecialtyMutation } = specialtiesApi;
