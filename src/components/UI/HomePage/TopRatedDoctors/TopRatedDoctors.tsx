@@ -1,3 +1,4 @@
+import img from "@/assets/images/doctor1.png";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import {
   Box,
@@ -14,7 +15,7 @@ import Image from "next/image";
 const TopRatedDoctors = async () => {
   const res = await fetch("http://localhost:5000/api/v1/doctor?page=1&limit=3");
   const { data: doctors } = await res.json();
-  //   console.log(doctors);
+  console.log(doctors);
 
   return (
     <Box
@@ -42,12 +43,7 @@ const TopRatedDoctors = async () => {
             <Grid item key={doctor.id}>
               <Card sx={{ maxWidth: 345 }}>
                 <Box>
-                  <Image
-                    src={doctor.profilePhoto}
-                    alt="doctor"
-                    width={500}
-                    height={500}
-                  />
+                  <Image src={img} alt="doctor" width={500} height={500} />
                 </Box>
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
