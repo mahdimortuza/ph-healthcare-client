@@ -9,7 +9,7 @@ import React from "react";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
 
-type TProps = {
+export type TProps = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
