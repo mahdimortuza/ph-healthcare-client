@@ -22,7 +22,7 @@ const DoctorsPage = () => {
   });
 
   if (!!debouncedTerms) {
-    query["searchTerm"] = searchTerm; // backend uses "searchTerm" to search data
+    query["searchTerm"] = searchTerm; // backend uses this word "searchTerm" to search data
   }
 
   const { data, isLoading } = useGetAllDoctorsQuery({ ...query });
