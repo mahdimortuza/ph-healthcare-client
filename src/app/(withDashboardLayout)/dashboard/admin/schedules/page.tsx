@@ -11,6 +11,7 @@ const SchedulesPage = () => {
     <Box>
       <Button onClick={() => setIsModalOpen(true)}>Create Schedule</Button>
       <ScheduleModal open={isModalOpen} setOpen={setIsModalOpen} />
+      <Box my={5}>Display Schedules</Box>
     </Box>
   );
 };

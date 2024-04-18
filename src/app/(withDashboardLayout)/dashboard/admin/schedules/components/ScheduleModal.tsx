@@ -1,6 +1,7 @@
+import PHDatePicker from "@/components/Forms/PHDatePicker";
 import PHForm from "@/components/Forms/PHForm";
 import PHModal from "@/components/Shared/PHModal/PHModal";
-import { Button } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { FieldValues } from "react-hook-form";
 
 type TProps = {
@@ -21,6 +22,12 @@ const ScheduleModal = ({ open, setOpen }: TProps) => {
   return (
     <PHModal open={open} setOpen={setOpen} title="Create Schedule">
       <PHForm onSubmit={handleFormSubmit}>
+        <Grid container spacing={2}>
+          <Grid item md={12}>
+            <PHDatePicker />
+          </Grid>
+        </Grid>
+
         <Button type="submit" sx={{ mt: 1 }}>
           Create
         </Button>
