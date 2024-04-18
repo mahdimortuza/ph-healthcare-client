@@ -1,52 +1,58 @@
 import { SxProps } from "@mui/material";
+import { TimePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs from "dayjs";
 import { Controller, useFormContext } from "react-hook-form";
 
-interface IDatePicker {
+interface ITimePicker {
   name: string;
   size?: "small" | "medium";
+  placeholder?: string;
   label?: string;
   required?: boolean;
   fullWidth?: boolean;
   sx?: SxProps;
 }
 
-const PHDatePicker = ({
+const PHTimePicker = ({
   name,
-  size = "small",
   label,
+  size = "small",
   required,
   fullWidth = true,
   sx,
-}: IDatePicker) => {
-  const { control } = useFormContext();
+}: ITimePicker) => {
+  const { control, formState } = useFormContext();
+  const isError = formState.errors[name] !== undefined;
+
   return (
     <Controller
-      name={name}
       control={control}
+      name={name}
       defaultValue={dayjs(new Date().toDateString())}
       render={({ field: { onChange, value, ...field } }) => {
         return (
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DesktopDatePicker
-              label={label}
-              timezone="system"
-              disablePast
+            <TimePicker
               {...field}
-              onChange={(date) => onChange(date)}
+              label={label}
               value={value || Date.now()}
+              onChange={(time) => onChange(time)}
+              timezone="system"
               slotProps={{
                 textField: {
                   required: required,
+                  fullWidth: fullWidth,
                   size: size,
                   sx: {
                     ...sx,
                   },
                   variant: "outlined",
-                  fullWidth: fullWidth,
+                  error: isError,
+                  helperText: isError
+                    ? (formState.errors[name]?.message as string)
+                    : "",
                 },
               }}
             />
@@ -57,4 +63,4 @@ const PHDatePicker = ({
   );
 };
 
-export default PHDatePicker;
+export default PHTimePicker;
