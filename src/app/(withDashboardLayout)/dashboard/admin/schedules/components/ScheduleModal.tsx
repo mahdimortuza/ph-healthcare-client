@@ -11,7 +11,7 @@ type TProps = {
 
 const ScheduleModal = ({ open, setOpen }: TProps) => {
   const handleFormSubmit = async (values: FieldValues) => {
-    // console.log(values);
+    console.log(values);
 
     try {
     } catch (err: any) {
@@ -24,7 +24,7 @@ const ScheduleModal = ({ open, setOpen }: TProps) => {
       <PHForm onSubmit={handleFormSubmit}>
         <Grid container spacing={2}>
           <Grid item md={12}>
-            <PHDatePicker />
+            <PHDatePicker name="startDate" />
           </Grid>
         </Grid>
 
