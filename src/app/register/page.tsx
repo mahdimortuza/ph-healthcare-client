@@ -18,9 +18,8 @@ import { z } from "zod";
 export const patientValidationSchema = z.object({
   name: z.string().min(1, "please enter your full name"),
   email: z.string().email("please enter your email"),
-  contactNumber: z
-    .string()
-    .regex(/^\{11}$/, "please provide your phone number"),
+  contactNumber: z.string(),
+  // .regex(/^\{11}$/, "please provide your phone number"),
   address: z.string().min(1, "please enter your address"),
 });
 

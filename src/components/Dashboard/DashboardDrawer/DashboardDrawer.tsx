@@ -1,5 +1,8 @@
 "use client";
+import { useGetSingleUserQuery } from "@/redux/api/userApi";
 import MenuIcon from "@mui/icons-material/Menu";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import { Avatar, Badge, Stack } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -8,6 +11,7 @@ import IconButton from "@mui/material/IconButton";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
+import AccountMenu from "../AccountMenu/AccountMenu";
 import Sidebar from "../Sidebar/Sidebar";
 
 const drawerWidth = 240;
@@ -35,6 +39,9 @@ export default function DashboardDrawer({
     }
   };
 
+  const { data, isLoading } = useGetSingleUserQuery({});
+  console.log(data);
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -60,7 +67,7 @@ export default function DashboardDrawer({
           </IconButton>
           <Box>
             <Typography variant="body2" noWrap component="div" color="gray">
-              Hi, Tonmoy
+              Hi, {isLoading ? "Loading" : data?.name}
             </Typography>
             <Typography
               variant="body2"
@@ -71,6 +78,16 @@ export default function DashboardDrawer({
               Welcome To, PH Healthcare!
             </Typography>
           </Box>
+
+          <Stack direction="row" gap={3}>
+            <Badge badgeContent={1} color="primary">
+              <IconButton sx={{ background: "#ffffff" }}>
+                <NotificationsNoneIcon color="action" />
+              </IconButton>
+            </Badge>
+            <Avatar alt={data?.name} src={data?.profilePhoto} />
+            <AccountMenu />
+          </Stack>
         </Toolbar>
       </AppBar>
       <Box
